@@ -26,6 +26,11 @@ describe('Login Page', () => {
       cy.get(`[data-cy="password-input"]`).type("1234");
       cy.contains(errorMessage.password);
     });
+    it('Button is disabled for for unvalidated inputs.', () => {
+      cy.visit("http://localhost:5173/");
+      cy.get(`[data-cy="password-input"]`).type("1234");
+      cy.get(`[data-cy="submit-button"]`).should("be.disabled")
+    });
 
   });
 });

@@ -18,7 +18,7 @@ const initialValues = {
   email: "",
   password: "",
 };
-const errorMessage = {
+export const errorMessage = {
   ad: "En az üç karakter giriniz",
   soyad: "En az üç karakter giriniz",
   email: "Geçerli bir email adresi giriniz",
@@ -112,8 +112,13 @@ export default function Login() {
               onChange={handleChange}
               value={formData.ad}
               invalid={errors.ad}
+              data-cy="ad-input"
             />
-            {errors.ad && <FormFeedback>{errorMessage.ad}</FormFeedback>}
+            {errors.ad && (
+              <FormFeedback data-cy="error-message">
+                {errorMessage.ad}
+              </FormFeedback>
+            )}
           </FormGroup>
           <FormGroup>
             <Label for="soyad">Soyad</Label>
@@ -125,8 +130,13 @@ export default function Login() {
               onChange={handleChange}
               value={formData.soyad}
               invalid={errors.soyad}
+              data-cy="soyad-input"
             />
-            {errors.soyad && <FormFeedback>{errorMessage.soyad}</FormFeedback>}
+            {errors.soyad && (
+              <FormFeedback data-cy="error-message">
+                {errorMessage.soyad}
+              </FormFeedback>
+            )}
           </FormGroup>
           <FormGroup>
             <Label for="email">Email</Label>
@@ -138,8 +148,13 @@ export default function Login() {
               onChange={handleChange}
               value={formData.email}
               invalid={errors.email}
+              data-cy="email-input"
             />
-            {errors.email && <FormFeedback>{errorMessage.email}</FormFeedback>}
+            {errors.email && (
+              <FormFeedback data-cy="error-message">
+                {errorMessage.email}
+              </FormFeedback>
+            )}
           </FormGroup>
           <FormGroup>
             <Label for="password">Şifre</Label>
@@ -151,13 +166,17 @@ export default function Login() {
               onChange={handleChange}
               value={formData.password}
               invalid={errors.password}
+              data-cy="password-input"
             />
             {errors.password && (
-              <FormFeedback>{errorMessage.password}</FormFeedback>
+              <FormFeedback data-cy="error-message">
+                {errorMessage.password}
+              </FormFeedback>
             )}
           </FormGroup>
-          <Button disabled={!isValid}>Submit</Button>
-          <Button>Deneme</Button>
+          <Button disabled={!isValid} data-cy="submit-button">
+            Submit
+          </Button>
         </Form>
       </CardBody>
       <CardFooter>Id: {id} </CardFooter>

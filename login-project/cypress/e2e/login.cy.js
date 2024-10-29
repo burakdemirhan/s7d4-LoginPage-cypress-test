@@ -33,4 +33,21 @@ describe('Login Page', () => {
     });
 
   });
+  describe('form input validate', () => {
+    
+    it('button enabled for right validation', () => {
+      cy.visit("http://localhost:5173/");
+      cy.get(`[data-cy="ad-input"]`).type("burak");
+      cy.get(`[data-cy="soyad-input"]`).type("demirhan");
+      cy.get(`[data-cy="email-input"]`).type("emre@wit.com.tr");
+      cy.get(`[data-cy="password-input"]`).type("Salak.123");
+      cy.get(`[data-cy="submit-button"]`).should("not.be.disabled")
+     
+    });
+
+   
+
+    
+
+  });
 });
